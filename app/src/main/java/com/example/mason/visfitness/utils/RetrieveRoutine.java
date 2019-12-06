@@ -1,20 +1,11 @@
 package com.example.mason.visfitness.utils;
 
 import android.os.AsyncTask;
-import android.text.Html;
-import android.text.Spanned;
-
-
 import com.example.mason.visfitness.routinesModel;
-import com.example.mason.visfitness.workoutsModel;
 import com.google.gson.Gson;
-
 import org.json.JSONArray;
-
 import java.util.ArrayList;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 /**
@@ -23,25 +14,21 @@ import okhttp3.Response;
 
 public class RetrieveRoutine extends AsyncTask<Void, ArrayList<routinesModel>, ArrayList<routinesModel>> {
     private DataHandlerInterface listener;
-    int routineID;
+    private int variableID;
 
-    public RetrieveRoutine(DataHandlerInterface listener, int routineID){
+    public RetrieveRoutine(DataHandlerInterface listener, int variableID){
         this.listener=listener;
-        this.routineID=routineID;
+        this.variableID=variableID;
     }
-
+    //In background make the sever request and convert the JSON to a list of Java objects
     protected ArrayList<routinesModel> doInBackground(Void... urls) {
-        String url = "http://10.0.2.2/diss/db_connect.php";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).build();
-        ArrayList<routinesModel> routinesModel=null;
-        Gson gson = new Gson();
+        ArrayList<routinesModel> routinesModel = new ArrayList<>();
         try{
-            final Response response = client.newCall(request).execute();
-            routinesModel = new ArrayList<>();
+            Response response = new MakeRequest().performRequest("get_routines.php");
             JSONArray jsonArray = new JSONArray(response.body().string());
             for(int i=0; i<jsonArray.length();i++){
-                routinesModel.add(gson.fromJson(jsonArray.get(i).toString(),routinesModel.class));
+                //add each element in the JSON array to the object list
+                routinesModel.add(new Gson().fromJson(jsonArray.get(i).toString(),routinesModel.class));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -49,10 +36,8 @@ public class RetrieveRoutine extends AsyncTask<Void, ArrayList<routinesModel>, A
         return routinesModel;
     }
 
-
     protected void onPostExecute(ArrayList<routinesModel> routinesModel) {
-        // TODO: check this.exception
-        // TODO: do something with the feed
+        //use interface to return the response
         listener.DataHandlerInterface(routinesModel);
     }
 }
