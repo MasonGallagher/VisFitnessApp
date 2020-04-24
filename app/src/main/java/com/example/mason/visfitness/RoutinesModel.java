@@ -6,19 +6,19 @@ import java.util.ArrayList;
  * Created by Mason on 06/12/2019.
  */
 
-public class routinesModel {
+public class RoutinesModel {
 
     int routineID;
     String routineName;
-    ArrayList<exerciseModel> exercises;
+    ArrayList<ExerciseModel> exercises;
 
-    public routinesModel(int routineID, String routineName,ArrayList<exerciseModel> exercises){
+    public RoutinesModel(int routineID, String routineName, ArrayList<ExerciseModel> exercises){
         this.routineID = routineID;
         this.routineName = routineName;
         this.exercises = exercises;
     }
 
-    public routinesModel() {
+    public RoutinesModel() {
 
     }
 
@@ -38,11 +38,11 @@ public class routinesModel {
         this.routineName = routineName;
     }
 
-    public ArrayList<exerciseModel> getExercises() {
+    public ArrayList<ExerciseModel> getExercises() {
         return exercises;
     }
 
-    public void setExercises(ArrayList<exerciseModel> exercises) {
+    public void setExercises(ArrayList<ExerciseModel> exercises) {
         this.exercises = exercises;
     }
 
