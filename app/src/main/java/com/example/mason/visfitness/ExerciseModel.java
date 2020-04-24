@@ -4,18 +4,18 @@ package com.example.mason.visfitness;
  * Created by Mason on 06/12/2019.
  */
 
-public class exerciseModel {
+public class ExerciseModel {
 
     int exerciseID;
     String exerciseName;
     int defaultSets;
     int defaultReps;
 
-    public exerciseModel(){
+    public ExerciseModel(){
 
     }
 
-    public exerciseModel(int exerciseID, String exerciseName, int defaultSets, int defaultReps){
+    public ExerciseModel(int exerciseID, String exerciseName, int defaultSets, int defaultReps){
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.defaultSets = defaultSets;
