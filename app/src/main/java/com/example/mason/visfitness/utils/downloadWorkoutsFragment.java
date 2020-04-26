@@ -34,7 +34,7 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_workouts, container, false);
         ButterKnife.bind(this,view);
         cr = getActivity().getContentResolver();
         RetrieveRoutine routine = new RetrieveRoutine(this,1);
