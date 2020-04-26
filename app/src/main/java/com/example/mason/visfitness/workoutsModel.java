@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class workoutsModel {
 
-    ArrayList<routinesModel> workouts;
+    ArrayList<RoutinesModel> workouts;
 
-    public workoutsModel(ArrayList<routinesModel> workouts){
+    public workoutsModel(ArrayList<RoutinesModel> workouts){
         this.workouts = workouts;
     }
 
@@ -18,11 +18,11 @@ public class workoutsModel {
 
     }
 
-    public ArrayList<routinesModel> getWorkouts() {
+    public ArrayList<RoutinesModel> getWorkouts() {
         return workouts;
     }
 
-    public void setWorkouts(ArrayList<routinesModel> workouts) {
+    public void setWorkouts(ArrayList<RoutinesModel> workouts) {
         this.workouts = workouts;
     }
 }

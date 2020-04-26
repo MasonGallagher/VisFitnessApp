@@ -1,8 +1,6 @@
 package com.example.mason.visfitness.utils;
 
-import android.text.Spanned;
-
-import com.example.mason.visfitness.routinesModel;
+import com.example.mason.visfitness.RoutinesModel;
 
 import java.util.ArrayList;
 
@@ -11,5 +9,5 @@ import java.util.ArrayList;
  */
 
 public interface DataHandlerInterface {
-    void DataHandlerInterface(ArrayList<routinesModel> routinesModel);
+    void DataHandlerInterface(ArrayList<RoutinesModel> routinesModel);
 }

@@ -1,5 +1,6 @@
 package com.example.mason.visfitness;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,10 +16,10 @@ import java.util.ArrayList;
 
 public class viewWorkoutAdapter  extends RecyclerView.Adapter<viewWorkoutAdapter.ViewHolder> {
 
-        private ArrayList<routinesModel> routineList;
+        private ArrayList<RoutinesModel> routineList;
         private LayoutInflater mInflater;
 
-        public viewWorkoutAdapter(Context context,ArrayList<routinesModel> routines) {
+        public viewWorkoutAdapter(Context context,ArrayList<RoutinesModel> routines) {
             this.mInflater = LayoutInflater.from(context);
             this.routineList = routines;
         }
@@ -29,34 +30,29 @@ public class viewWorkoutAdapter  extends RecyclerView.Adapter<viewWorkoutAdapter
             return new ViewHolder(view);
         }
 
+        @SuppressLint("DefaultLocale")
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            routinesModel routine = routineList.get(position);
+            RoutinesModel routine = routineList.get(position);
             String text = String.format("routine: %s", routine.getRoutineName());
             for(int i=0; i < routine.getExercises().size();i++){
-                exerciseModel exerciseModel = routine.getExercises().get(i);
+                ExerciseModel exerciseModel = routine.getExercises().get(i);
                 text=text+String.format("\n%s sets: %d reps: %d",exerciseModel.getExerciseName(),
                         exerciseModel.getDefaultSets(), exerciseModel.getDefaultReps());
             }
             holder.textView.setText(text);
         }
 
-        // total number of rows
         @Override
         public int getItemCount() {
             return routineList.size();
         }
 
-
         public class ViewHolder extends RecyclerView.ViewHolder {
             TextView textView;
-
             ViewHolder(View itemView) {
                 super(itemView);
                 textView = itemView.findViewById(R.id.textView);
             }
-
         }
-
-
-    }
+}
