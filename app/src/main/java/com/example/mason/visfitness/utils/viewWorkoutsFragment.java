@@ -1,11 +1,8 @@
 package com.example.mason.visfitness.utils;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +15,6 @@ import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.RoutinesModel;
 import com.example.mason.visfitness.viewWorkoutAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -33,7 +29,7 @@ public class viewWorkoutsFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_workouts, container, false);
         ButterKnife.bind(this,view);
         populateDatabase();
         return view;
