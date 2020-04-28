@@ -1,0 +1,87 @@
+<?php
+    
+    include_once 'config.php';
+    
+	$exerciseName = "mason";
+
+	$testObject = new DbConnect();
+
+	$testObject->__construct();
+	$testObject->_post($exerciseName);
+
+    class DbConnect{
+        
+        private $connect;
+
+        public function __construct(){
+            $this->connect = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+            if (mysqli_connect_errno($this->connect)){
+                echo "Unable to connect to MySQL Database: " . mysqli_connect_error();
+            }
+        }
+        
+        public function getDb(){
+            return $this->connect;
+        }
+		
+		public function _post($exerciseName){
+			$json = array();
+			$query = "SELECT workouts.routineID, workouts.exerciseID, routines.routineName, exercises.exerciseName, exercises.defaultSets, exercises.defaultReps FROM workouts INNER JOIN exercises ON exercises.exerciseID = workouts.exerciseID INNER JOIN routines ON routines.routineID = workouts.routineID ";
+			$result = mysqli_query($this->getDb(), $query);
+			$i=1;
+			$rows = array();
+			while ($row = $result->fetch_assoc()) {
+				$rows[] = $row;
+			}
+			$json =  json_encode($rows);
+			$objects = json_decode($json);
+			$grouped = array();
+
+			// Loop JSON objects
+			foreach($objects as $object) {
+				if(!array_key_exists($object->routineID, $grouped)) { // a new ID...
+					 $newObject = new stdClass();
+
+					 // Copy the ID/ID_NAME, and create an ITEMS placeholder
+					 $newObject->routineID = $object->routineID;
+					 $newObject->routineName = $object->routineName;
+					 $newObject->exercises = array();
+
+					 // Save this new object
+					 $grouped[$object->routineID] = $newObject;
+				}
+
+				$taskObject = new stdClass();
+
+				// Copy the TASK/TASK_NAME
+				$taskObject->exerciseID = $object->exerciseID;
+				$taskObject->exerciseName = $object->exerciseName;
+				$taskObject->defaultSets = $object->defaultSets;
+				$taskObject->defaultReps = $object->defaultReps;
+
+				// Append this new task to the ITEMS array
+				$grouped[$object->routineID]->exercises[] = $taskObject;
+			}
+
+			// We use array_values() to remove the keys used to identify similar objects
+			// And then re-encode this data :)
+			$grouped = array_values($grouped);
+			$json = json_encode($grouped);
+			echo $json;
+			/*if($inserted == 1){
+                    
+                    $json['success'] = 1;
+                    $json['message'] = "Successfully registered the user";
+					echo "connected to database";
+                    
+                }else{
+                    
+                    $json['success'] = 0;
+                    $json['message'] = "Error in registering. Probably the username/email already exists";
+                    
+                }
+                */
+                mysqli_close($this->getDb());
+		}
+    }
+?>
