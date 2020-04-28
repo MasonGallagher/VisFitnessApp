@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mason.visfitness.utils.MyPopupClass;
 
 import java.util.ArrayList;
 
@@ -18,8 +21,10 @@ public class viewWorkoutAdapter  extends RecyclerView.Adapter<viewWorkoutAdapter
 
         private ArrayList<RoutinesModel> routineList;
         private LayoutInflater mInflater;
+        private Context context;
 
         public viewWorkoutAdapter(Context context,ArrayList<RoutinesModel> routines) {
+            this.context = context;
             this.mInflater = LayoutInflater.from(context);
             this.routineList = routines;
         }
@@ -50,9 +55,20 @@ public class viewWorkoutAdapter  extends RecyclerView.Adapter<viewWorkoutAdapter
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             TextView textView;
+            ImageView editBtn;
             ViewHolder(View itemView) {
                 super(itemView);
                 textView = itemView.findViewById(R.id.textView);
+                editBtn = itemView.findViewById(R.id.edit_btn);
+                ViewHolder adapter = this;
+                editBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        MyPopupClass popUpClass = new MyPopupClass();
+                        popUpClass.showPopupWindow(view,routineList.get(getAdapterPosition()),
+                                context);
+                    }
+                });
             }
         }
 }
