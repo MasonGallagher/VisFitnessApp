@@ -56,6 +56,6 @@ public class ExerciseModel {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "[exerciseName=" + exerciseName + "]";
+        return getClass().getSimpleName() + "[exerciseName=" + exerciseName + ", ID=" + exerciseID + "]";
     }
 }

@@ -14,7 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.mason.visfitness.utils.DeleteExercise;
+import com.example.mason.visfitness.utils.EditNewRoutine;
 import com.example.mason.visfitness.utils.ExerciseRecyclerAdapter;
 import com.example.mason.visfitness.utils.SwipeToDeleteCallback;
 
@@ -51,12 +54,14 @@ public class EditWorkoutsFragment extends Fragment {
         exercise_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ExerciseRecyclerAdapter(getContext(), routinesModel.getExercises());
         exercise_recycler.setAdapter(adapter);
+        deleted_exercises=new ArrayList<>();
         enableSwipeToDeleteAndUndo();
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ArrayList<ExerciseModel> exerciseModelArrayList = new ArrayList<>();
                 RoutinesModel newRoutineModel = new RoutinesModel();
+                newRoutineModel.setRoutineID(routinesModel.getRoutineID());
                 newRoutineModel.setRoutineName(et_routine_name.getText().toString());
                 for(int i=0; i<exercise_recycler.getChildCount();i++){
                     View v = exercise_recycler.getChildAt(i);
@@ -64,14 +69,19 @@ public class EditWorkoutsFragment extends Fragment {
                     EditText etSets = v.findViewById(R.id.et_sets);
                     EditText etReps = v.findViewById(R.id.et_reps);
                     ExerciseModel exerciseModel = new ExerciseModel();
-                    exercise_recycler.getChildAt(3)
+                    exerciseModel.setExerciseID(routinesModel.getExercises().get(i).getExerciseID());
                     exerciseModel.setExerciseName(etName.getText().toString());
                     exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
                     exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
-                    exerciseModel.setExerciseID(routinesModel.getExercises());
                     exerciseModelArrayList.add(exerciseModel);
                 }
-                routinesModel.setExercises(exerciseModelArrayList);
+                newRoutineModel.setExercises(exerciseModelArrayList);
+                for(ExerciseModel exerciseModel: deleted_exercises)
+                    new DeleteExercise().deleteNewExercise(getContext(), exerciseModel);
+                new EditNewRoutine().EditNewRoutine(getContext(),newRoutineModel);
+                Toast.makeText(getContext(), routinesModel.getRoutineName()+
+                        " has been successfully edited!", Toast.LENGTH_SHORT).show();
+
             }
         });
         return view;
@@ -82,7 +92,8 @@ public class EditWorkoutsFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                 deleted_exercises.add(routinesModel.getExercises().get(viewHolder.getAdapterPosition()));
-                adapter.removeItem(viewHolder.getAdapterPosition());
+                routinesModel.getExercises().remove(routinesModel.getExercises().get(viewHolder.getAdapterPosition()));
+                adapter.notifyDataSetChanged();
             }
         };
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
