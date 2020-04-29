@@ -48,6 +48,6 @@ public class RoutinesModel {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "[routineName=" + routineName + "]";
+        return getClass().getSimpleName() + "[routineName=" + routineName +", ID="+routineID+ "]";
     }
 }

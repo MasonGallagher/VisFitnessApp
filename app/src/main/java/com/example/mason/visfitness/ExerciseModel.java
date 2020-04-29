@@ -53,4 +53,9 @@ public class ExerciseModel {
     public void setDefaultReps(int defaultReps) {
         this.defaultReps = defaultReps;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[exerciseName=" + exerciseName + ", ID=" + exerciseID + "]";
+    }
 }
