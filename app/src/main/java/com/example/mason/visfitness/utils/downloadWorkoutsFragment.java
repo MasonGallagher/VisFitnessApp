@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.mason.visfitness.ExerciseModel;
 import com.example.mason.visfitness.R;
@@ -73,16 +74,14 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
 
 
     private void populateRoutine(RoutinesModel routinesModel){
-        String[] routine_id= {String.valueOf(routinesModel.getRoutineID())};
-        Cursor cursor = db.rawQuery("select * from routines where routineID=?",
-                routine_id);
+        String[] share_code= {et_code.getText().toString()};
+        Cursor cursor = db.rawQuery("select * from shared where shareCode=?",
+                share_code);
         if(cursor.moveToFirst()) {
             do {
-                System.out.println("found");
+                Toast.makeText(getContext(), "Routine already saved!", Toast.LENGTH_SHORT).show();
             } while(cursor.moveToNext());
         }else{
-            System.out.println("not found");
-
             ContentValues newValues = new ContentValues();
             newValues.put(MyProviderContract.ROUTINE_ID, routinesModel.getRoutineID());
             newValues.put(MyProviderContract.ROUTINE_NAME, routinesModel.getRoutineName());

@@ -107,6 +107,7 @@ public class MyPopupClass implements DataHandlerInterface {
                 ClipData clip = ClipData.newPlainText("label",
                         routinesModel.get(0).getRoutineName());
                 clipboard.setPrimaryClip(clip);
+                new SaveShareCode().saveShareCode(activity,routinesModel.get(0));
             }
     }
 }

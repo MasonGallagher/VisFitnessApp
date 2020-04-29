@@ -39,7 +39,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CONSTRAINT fk2 FOREIGN KEY(routineID)REFERENCES routines(routineID)," +
                 "CONSTRAINT workoutID PRIMARY KEY(exerciseID, routineID))");
 
-
+        db.execSQL("CREATE TABLE shared (" +
+                "shareCode VARCHAR(128)NOT NULL  PRIMARY KEY)");
     }
 
     @Override
@@ -47,6 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS exercises");
         db.execSQL("DROP TABLE IF EXISTS routines");
         db.execSQL("DROP TABLE IF EXISTS workouts");
+        db.execSQL("DROP TABLE IF EXISTS shared");
         onCreate(db);
     }
 }
