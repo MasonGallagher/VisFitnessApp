@@ -1,6 +1,6 @@
 package com.example.mason.visfitness.utils;
 
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 
 import java.util.ArrayList;
 

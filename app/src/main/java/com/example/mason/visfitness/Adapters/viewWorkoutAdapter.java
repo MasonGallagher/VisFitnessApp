@@ -1,4 +1,4 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mason.visfitness.Models.ExerciseModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.utils.MyPopupClass;
 
 import java.util.ArrayList;

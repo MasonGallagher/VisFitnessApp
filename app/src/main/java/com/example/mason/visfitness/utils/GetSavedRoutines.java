@@ -4,8 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.mason.visfitness.ExerciseModel;
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.ExerciseModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 
 import java.util.ArrayList;
 

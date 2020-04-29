@@ -1,4 +1,4 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,12 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.mason.visfitness.ExerciseModel;
+import com.example.mason.visfitness.Models.ExerciseModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.R;
-import com.example.mason.visfitness.RoutinesModel;
 import com.example.mason.visfitness.utils.ExerciseRecyclerAdapter;
 import com.example.mason.visfitness.utils.SaveNewRoutine;
 import com.example.mason.visfitness.utils.SwipeToDeleteCallback;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class createWorkoutFragment extends Fragment{
+public class CreateWorkoutFragment extends Fragment{
 
 
     @BindView(R.id.button)

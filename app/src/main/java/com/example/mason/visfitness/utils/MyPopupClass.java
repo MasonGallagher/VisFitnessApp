@@ -12,11 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.mason.visfitness.EditWorkoutsFragment;
-import com.example.mason.visfitness.ExerciseModel;
-import com.example.mason.visfitness.MainActivity;
+import com.example.mason.visfitness.Fragments.EditWorkoutsFragment;
+import com.example.mason.visfitness.Activities.MainActivity;
 import com.example.mason.visfitness.R;
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 
 import java.util.ArrayList;
 

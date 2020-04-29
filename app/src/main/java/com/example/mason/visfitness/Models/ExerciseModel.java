@@ -1,4 +1,4 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Models;
 
 /**
  * Created by Mason on 06/12/2019.

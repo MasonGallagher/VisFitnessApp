@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,10 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.mason.visfitness.ExerciseModel;
+import com.example.mason.visfitness.Models.ExerciseModel;
 import com.example.mason.visfitness.R;
-import com.example.mason.visfitness.RoutinesModel;
-import com.example.mason.visfitness.viewWorkoutAdapter;
+import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.Adapters.viewWorkoutAdapter;
 
 import java.util.ArrayList;
 

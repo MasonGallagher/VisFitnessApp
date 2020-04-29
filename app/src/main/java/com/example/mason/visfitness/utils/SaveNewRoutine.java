@@ -2,14 +2,10 @@ package com.example.mason.visfitness.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-import com.example.mason.visfitness.ExerciseModel;
-import com.example.mason.visfitness.RoutinesModel;
-
-import java.util.ArrayList;
+import com.example.mason.visfitness.Models.ExerciseModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 
 public class SaveNewRoutine {
 
