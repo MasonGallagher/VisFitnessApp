@@ -2,10 +2,8 @@ package com.example.mason.visfitness.utils;
 
 import android.os.AsyncTask;
 
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 import com.google.gson.Gson;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 

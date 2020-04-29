@@ -1,9 +1,7 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.mason.visfitness.Models.ExerciseModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.utils.DeleteExercise;
 import com.example.mason.visfitness.utils.EditNewRoutine;
 import com.example.mason.visfitness.utils.ExerciseRecyclerAdapter;

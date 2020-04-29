@@ -2,8 +2,7 @@ package com.example.mason.visfitness.utils;
 
 import android.content.Context;
 
-import com.example.mason.visfitness.ExerciseModel;
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.ExerciseModel;
 
 public class DeleteExercise {
 

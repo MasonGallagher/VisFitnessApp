@@ -1,4 +1,4 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.mason.visfitness.Adapters.viewWorkoutAdapter;
+import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.utils.GetSavedRoutines;
 
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class viewWorkoutsFragment extends Fragment {
+public class ViewWorkoutsFragment extends Fragment {
 
     @BindView(R.id.rcView)
     RecyclerView recyclerView;
