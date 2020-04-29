@@ -1,5 +1,7 @@
 package com.example.mason.visfitness.utils;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -11,16 +13,21 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.mason.visfitness.EditWorkoutsFragment;
+import com.example.mason.visfitness.ExerciseModel;
 import com.example.mason.visfitness.MainActivity;
 import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.RoutinesModel;
 
-public class MyPopupClass {
+import java.util.ArrayList;
 
-    //PopupWindow display method
-    private MainActivity activity;
+public class MyPopupClass implements DataHandlerInterface {
 
-    public void showPopupWindow(final View view, final RoutinesModel routinesModel, final Context context) {
+
+        //PopupWindow display method
+        private MainActivity activity;
+
+        public void showPopupWindow ( final View view, final RoutinesModel routinesModel,
+        final Context context){
 
 
         //Create a View object yourself through inflater
@@ -42,23 +49,21 @@ public class MyPopupClass {
         final Handler handler = new Handler();
         activity = ((MainActivity) context);
 
-        LinearLayout delete_layout = popupView.findViewById(R.id.delete_layout);
-        delete_layout.setOnClickListener(new View.OnClickListener() {
+        popupView.findViewById(R.id.delete_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handler.postDelayed(new Runnable() {
                     public void run() {
-                        new DeleteNewRoutine().deleteNewRoutine(context,routinesModel);
+                        new DeleteNewRoutine().deleteNewRoutine(context, routinesModel);
                         activity.refreshViewFragment(routinesModel);
-                        Toast.makeText(context, routinesModel.getRoutineName()+
+                        Toast.makeText(context, routinesModel.getRoutineName() +
                                 " has been successfully deleted!", Toast.LENGTH_SHORT).show();
                         popupWindow.dismiss();
                     }
                 }, 100);
             }
         });
-        LinearLayout edit_layout = popupView.findViewById(R.id.edit_layout);
-        edit_layout.setOnClickListener(new View.OnClickListener() {
+        popupView.findViewById(R.id.edit_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handler.postDelayed(new Runnable() {
@@ -72,6 +77,36 @@ public class MyPopupClass {
             }
         });
 
+            popupView.findViewById(R.id.share_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        callPostRoutine(routinesModel);
+                        popupWindow.dismiss();
+                    }
+                }, 100);
+
+            }
+        });
+
     }
 
+    private void callPostRoutine(RoutinesModel routinesModel){
+        PostRoutine routine = new PostRoutine(this, routinesModel);
+        routine.execute();
+    }
+
+    @Override
+    public void DataHandlerInterface(ArrayList<RoutinesModel> routinesModel) {
+            if(!routinesModel.isEmpty()) {
+                Toast.makeText(activity, "Share code has been copied to clipboard",
+                        Toast.LENGTH_SHORT).show();
+                ClipboardManager clipboard = (ClipboardManager)
+                        activity.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label",
+                        routinesModel.get(0).getRoutineName());
+                clipboard.setPrimaryClip(clip);
+            }
+    }
 }
