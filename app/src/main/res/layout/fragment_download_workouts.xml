@@ -15,12 +15,26 @@
     <RelativeLayout
         android:id="@+id/empty"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/exercise_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Download routine:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
             <TextView
@@ -29,7 +43,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Enter routine code: "
-                android:textSize="26sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_code"
@@ -37,11 +53,20 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp" />
 
-            <Button
+            <LinearLayout
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/curved_button">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Submit code"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 

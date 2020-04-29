@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.mason.visfitness.Models.ExerciseModel;
@@ -32,7 +33,7 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
     @BindView(R.id.et_code)
     EditText et_code;
     @BindView(R.id.submit)
-    Button submit;
+    LinearLayout submit;
     ContentResolver cr;
     DBHelper dbHelper;
     SQLiteDatabase db;

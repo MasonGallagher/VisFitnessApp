@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.mason.visfitness.Models.ExerciseModel;
@@ -29,11 +30,11 @@ public class CreateWorkoutFragment extends Fragment{
 
 
     @BindView(R.id.button)
-    Button button;
+    LinearLayout button;
     @BindView(R.id.et_routine_name)
     EditText et_routine_name;
     @BindView(R.id.save)
-    Button save;
+    LinearLayout save;
     @BindView(R.id.exercise_recycler)
     RecyclerView exercise_recycler;
 
@@ -60,8 +61,10 @@ public class CreateWorkoutFragment extends Fragment{
                     EditText etReps = v.findViewById(R.id.et_reps);
                     ExerciseModel exerciseModel = exerciseModelArrayList.get(i);
                     exerciseModel.setExerciseName(etName.getText().toString());
-                    exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
-                    exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
+                    if(etSets.getText().length()!=0) {
+                        exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
+                        exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
+                    }
                 }
                 exerciseModelArrayList.add(new ExerciseModel());
                 adapter.notifyDataSetChanged();
