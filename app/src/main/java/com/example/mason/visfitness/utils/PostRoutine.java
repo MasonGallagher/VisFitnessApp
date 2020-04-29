@@ -15,26 +15,28 @@ import okhttp3.Response;
  * Created by Mason on 04/12/2019.
  */
 
-public class RetrieveRoutine extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
+public class PostRoutine extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
     private DataHandlerInterface listener;
-    private String variableID;
+    private RoutinesModel routinesModel;
 
-    public RetrieveRoutine(DataHandlerInterface listener, String variableID){
+    public PostRoutine(DataHandlerInterface listener, RoutinesModel routinesModel){
         this.listener=listener;
-        this.variableID=variableID;
+        this.routinesModel=routinesModel;
     }
+
+
     //In background make the sever request and convert the JSON to a list of Java objects
     protected ArrayList<RoutinesModel> doInBackground(Void... urls) {
-        ArrayList<RoutinesModel> routinesModel = new ArrayList<>();
+        ArrayList<RoutinesModel> routinesModelArrayList = new ArrayList<>();
         try{
-            String suffix = String.format("get_specific_routine.php?rID=%s",variableID);
-            Response response = new MakeRequest().performRequest(suffix);
-            JSONArray jsonArray = new JSONArray(response.body().string());
-            routinesModel.add(new Gson().fromJson(jsonArray.get(0).toString(), RoutinesModel.class));
+            String gson = new Gson().toJson(routinesModel);
+            Response response = new MakeRequest().postRequest(gson);
+            routinesModelArrayList.add(new RoutinesModel(3,response.body().string(),
+                    null));
         }catch (Exception e){
             e.printStackTrace();
         }
-        return routinesModel;
+        return routinesModelArrayList;
     }
 
     protected void onPostExecute(ArrayList<RoutinesModel> routinesModel) {
