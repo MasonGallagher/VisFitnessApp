@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
@@ -34,5 +34,5 @@
             android:textColor="@android:color/white"
             app:layout_constraintStart_toEndOf="@+id/sets"
             app:layout_constraintTop_toBottomOf="@+id/exercise_name" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

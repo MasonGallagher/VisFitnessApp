@@ -3,6 +3,8 @@
     <color name="colorPrimary">#376A9E</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="offwhite">#fcfcfc</color>
+    <color name="soft_green">#00a150</color>
     <color name="gradient_start">#286e84</color>
     <color name="gradient_end">#72bcd4</color>
     <color name="gradient_start2">#842840</color>

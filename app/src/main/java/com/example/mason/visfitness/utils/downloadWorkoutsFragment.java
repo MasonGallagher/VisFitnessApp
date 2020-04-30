@@ -5,14 +5,12 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.mason.visfitness.Models.ExerciseModel;
@@ -22,6 +20,9 @@ import com.example.mason.visfitness.Adapters.viewWorkoutAdapter;
 
 import java.util.ArrayList;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -32,7 +33,7 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
     @BindView(R.id.et_code)
     EditText et_code;
     @BindView(R.id.submit)
-    Button submit;
+    LinearLayout submit;
     ContentResolver cr;
     DBHelper dbHelper;
     SQLiteDatabase db;
