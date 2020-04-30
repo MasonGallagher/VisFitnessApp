@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.example.mason.visfitness.ExerciseModel;
+import com.example.mason.visfitness.Models.ExerciseModel;
 import com.example.mason.visfitness.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Models;
 
 import java.util.ArrayList;
 

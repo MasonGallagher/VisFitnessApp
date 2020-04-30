@@ -26,6 +26,7 @@ public class MyProvider extends ContentProvider {
         uriMatcher.addURI(MyProviderContract.AUTHORITY, "exercises", 1);
         uriMatcher.addURI(MyProviderContract.AUTHORITY, "routines", 2);
         uriMatcher.addURI(MyProviderContract.AUTHORITY, "workouts", 3);
+        uriMatcher.addURI(MyProviderContract.AUTHORITY, "shared", 4);
     }
 
     @Override
@@ -49,6 +50,9 @@ public class MyProvider extends ContentProvider {
                 break;
             case 3:
                 tableName = "workouts";
+                break;
+            case 4:
+                tableName = "shared";
                 break;
         }
         long id = db.insert(tableName, null, values);
@@ -74,16 +78,9 @@ public class MyProvider extends ContentProvider {
             case 3:
                 return db.query("workouts", new String[] { "exerciseID", "routineID"  },
                         null, null, null, null, sortOrder);
-//            case 3:
-//                String [] recipeId = { "6" };
-//                Cursor cursor;
-//                cursor = db.rawQuery("select r._id as recipe_id, r.name, ri.ingredient_id,"+
-//                                "i.ingredientname "+
-//                                "from recipes r "+
-//                                "join recipe_ingredients ri on (r._id = ri.recipe_id)"+
-//                                "join ingredients i on (ri.ingredient_id = i._id) where r._id == ?",
-//                        recipeId);
-//                return cursor;
+            case 4:
+                return db.query("shared", new String[] { "shareCode" },
+                        null, null, null, null, sortOrder);
             default:
                 return null;
         }
@@ -114,6 +111,9 @@ public class MyProvider extends ContentProvider {
             case 3:
                 db.update("workouts", values, selection, selectionArgs);
                 break;
+            case 4:
+                db.update("shared", values, selection, selectionArgs);
+                break;
         }
         Uri nu = ContentUris.withAppendedId(uri, Long.parseLong(selection.split("=")[1]));
 
@@ -131,6 +131,9 @@ public class MyProvider extends ContentProvider {
                 break;
             case 3:
                 db.delete("workouts", selection, selectionArgs);
+                break;
+            case 4:
+                db.delete("shared", selection, selectionArgs);
                 break;
         }
         Uri nu = ContentUris.withAppendedId(uri, Long.parseLong(selection.split("=")[1]));

@@ -3,8 +3,8 @@ package com.example.mason.visfitness.utils;
 import android.content.ContentValues;
 import android.content.Context;
 
-import com.example.mason.visfitness.ExerciseModel;
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.ExerciseModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 
 public class EditNewRoutine {
 

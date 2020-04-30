@@ -14,14 +14,15 @@ class MyProviderContract {
     public static final Uri EXER_URI = Uri.parse("content://"+AUTHORITY+"/exercises");
     public static final Uri ROUT_URI = Uri.parse("content://"+AUTHORITY+"/routines");
     public static final Uri WORK_URI = Uri.parse("content://"+AUTHORITY+"/workouts");
+    public static final Uri SHAR_URI = Uri.parse("content://"+AUTHORITY+"/shared");
+    public static final String SHARE_CODE = "shareCode";
     public static final String EXERCISE_ID = "exerciseID";
     public static final String EXERCISE_NAME = "exerciseName";
     public static final String DEFAULT_SETS = "defaultSets";
     public static final String DEFAULT_REPS = "defaultReps";
     public static final String ROUTINE_ID = "routineID";
     public static final String ROUTINE_NAME = "routineName";
-    public static final String WORKOUT_ID = "workoutID";
-    public static final Uri ALL_URI = Uri.parse("content://"+AUTHORITY+"/");
+
 
     public static final String CONTENT_TYPE_SINGLE = "vnd.android.cursor.item/MyProvider.data.text";
     public static final String CONTENT_TYPE_MULTIPLE = "vnd.android.cursor.dir/MyProvider.data.text";

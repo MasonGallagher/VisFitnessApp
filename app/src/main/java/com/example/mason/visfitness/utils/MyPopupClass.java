@@ -12,11 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.mason.visfitness.EditWorkoutsFragment;
-import com.example.mason.visfitness.ExerciseModel;
-import com.example.mason.visfitness.MainActivity;
+import com.example.mason.visfitness.Fragments.EditWorkoutsFragment;
+import com.example.mason.visfitness.Activities.MainActivity;
 import com.example.mason.visfitness.R;
-import com.example.mason.visfitness.RoutinesModel;
+import com.example.mason.visfitness.Models.RoutinesModel;
 
 import java.util.ArrayList;
 
@@ -107,6 +106,7 @@ public class MyPopupClass implements DataHandlerInterface {
                 ClipData clip = ClipData.newPlainText("label",
                         routinesModel.get(0).getRoutineName());
                 clipboard.setPrimaryClip(clip);
+                new SaveShareCode().saveShareCode(activity,routinesModel.get(0));
             }
     }
 }

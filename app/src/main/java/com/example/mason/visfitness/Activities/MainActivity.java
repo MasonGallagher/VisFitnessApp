@@ -1,4 +1,4 @@
-package com.example.mason.visfitness;
+package com.example.mason.visfitness.Activities;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.mason.visfitness.R;
+import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.Fragments.CreateWorkoutFragment;
+import com.example.mason.visfitness.Fragments.ViewWorkoutsFragment;
 import com.example.mason.visfitness.utils.downloadWorkoutsFragment;
 
 public class MainActivity extends AppCompatActivity{
@@ -20,7 +24,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewWorkouts = new viewWorkoutsFragment();
+        viewWorkouts = new ViewWorkoutsFragment();
         setFragment(viewWorkouts);
 
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNav);
@@ -31,14 +35,14 @@ public class MainActivity extends AppCompatActivity{
                 switch(item.getItemId()){
                     case R.id.action_view:
                         if (viewWorkouts==null) {
-                            setFragment(new viewWorkoutsFragment());
+                            setFragment(new ViewWorkoutsFragment());
                         }else{
                             setFragment(viewWorkouts);
                         }
                         break;
                     case R.id.action_create:
                         if (createWorkouts==null) {
-                            setFragment(new createWorkoutFragment());
+                            setFragment(new CreateWorkoutFragment());
                         }else{
                             setFragment(createWorkouts);
                         }
@@ -58,8 +62,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void refreshViewFragment(RoutinesModel model){
-        ((viewWorkoutsFragment) viewWorkouts).routinesModelList.remove(model);
-        ((viewWorkoutsFragment) viewWorkouts).adapter.notifyDataSetChanged();
+        ((ViewWorkoutsFragment) viewWorkouts).routinesModelList.remove(model);
+        ((ViewWorkoutsFragment) viewWorkouts).adapter.notifyDataSetChanged();
     }
 
     public void setFragment(Fragment fragment){
