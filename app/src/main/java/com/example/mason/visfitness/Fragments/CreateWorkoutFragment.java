@@ -1,15 +1,9 @@
 package com.example.mason.visfitness.Fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -17,16 +11,23 @@ import android.widget.Toast;
 import com.example.mason.visfitness.Models.ExerciseModel;
 import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.R;
-import com.example.mason.visfitness.utils.ExerciseRecyclerAdapter;
+import com.example.mason.visfitness.Adapters.ExerciseRecyclerAdapter;
 import com.example.mason.visfitness.utils.SaveNewRoutine;
 import com.example.mason.visfitness.utils.SwipeToDeleteCallback;
 
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CreateWorkoutFragment extends Fragment{
+
+public class CreateWorkoutFragment extends Fragment {
 
 
     @BindView(R.id.button)
@@ -39,7 +40,7 @@ public class CreateWorkoutFragment extends Fragment{
     RecyclerView exercise_recycler;
 
     private ArrayList<ExerciseModel> exerciseModelArrayList;
-    private  ExerciseRecyclerAdapter adapter;
+    private ExerciseRecyclerAdapter adapter;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

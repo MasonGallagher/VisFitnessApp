@@ -3,8 +3,6 @@ package com.example.mason.visfitness.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +16,8 @@ import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.utils.MyPopupClass;
 
 import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Mason on 04/12/2019.
