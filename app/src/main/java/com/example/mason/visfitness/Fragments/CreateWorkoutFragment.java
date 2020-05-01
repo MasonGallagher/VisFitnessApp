@@ -70,7 +70,6 @@ public class CreateWorkoutFragment extends Fragment {
                 exerciseModelArrayList.add(new ExerciseModel());
                 adapter.notifyDataSetChanged();
 
-
             }
         });
         save.setOnClickListener(new View.OnClickListener() {

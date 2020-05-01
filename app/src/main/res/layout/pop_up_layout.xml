@@ -5,11 +5,14 @@
     android:layout_height="wrap_content"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
+    android:minWidth="240dp"
     android:gravity="center">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        android:elevation="8dp"
         app:cardCornerRadius="5dp">
 
         <LinearLayout
@@ -36,11 +39,17 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="12dp">
 
+                <ImageView
+                    android:padding="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_create_24"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:layout_marginStart="4dp"
                     android:text="Edit Workout"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -54,11 +63,18 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="12dp">
 
+                <ImageView
+                    android:padding="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_share_24"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="start"
+                    android:layout_marginStart="4dp"
                     android:text="Share Workout"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -67,17 +83,25 @@
 
             <LinearLayout
                 android:id="@+id/delete_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="12dp">
 
+                <ImageView
+                    android:padding="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_delete_24"
+                    />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="start"
+                    android:layout_marginStart="4dp"
                     android:text="Delete Workout"
                     android:textSize="20sp"
                     android:textStyle="bold" />

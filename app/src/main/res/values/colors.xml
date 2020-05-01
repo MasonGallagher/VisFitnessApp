@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#376A9E</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#bad0e8</color>
     <color name="offwhite">#fcfcfc</color>
     <color name="soft_green">#00a150</color>
     <color name="gradient_start">#286e84</color>
@@ -15,4 +15,6 @@
     <color name="gradient_end4">#cc99ff</color>
     <color name="gradient_start5">#ff850a</color>
     <color name="gradient_end5">#ffab56</color>
+    <color name="hint_colour">#d7e4f2</color>
+    <color name="soft_delete">#f14c59</color>
 </resources>

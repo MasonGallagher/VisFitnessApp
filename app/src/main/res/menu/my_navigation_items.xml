@@ -4,7 +4,7 @@
         android:icon="@android:drawable/ic_menu_view" />
     <item android:id="@+id/action_create"
         android:title="Create workout"
-        android:icon="@android:drawable/ic_input_add" />
+        android:icon="@drawable/baseline_add_box_24" />
     <item android:id="@+id/action_download"
         android:title="Download workout"
         android:icon="@android:drawable/stat_sys_download" />
