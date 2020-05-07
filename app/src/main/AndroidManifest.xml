@@ -12,8 +12,10 @@
         android:roundIcon="@drawable/logo_inverted"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.MainActivity"/>
+        <activity android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activities.LandingPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

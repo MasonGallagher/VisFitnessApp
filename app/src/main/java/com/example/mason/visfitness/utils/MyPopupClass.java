@@ -77,7 +77,7 @@ public class MyPopupClass implements DataHandlerInterface {
             }
         });
 
-            popupView.findViewById(R.id.share_layout).setOnClickListener(new View.OnClickListener() {
+        popupView.findViewById(R.id.share_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handler.postDelayed(new Runnable() {

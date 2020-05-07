@@ -1,4 +1,4 @@
-package com.example.mason.visfitness.utils;
+package com.example.mason.visfitness.Fragments;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -16,6 +16,10 @@ import com.example.mason.visfitness.Models.ExerciseModel;
 import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.Adapters.viewWorkoutAdapter;
+import com.example.mason.visfitness.utils.DBHelper;
+import com.example.mason.visfitness.utils.DataHandlerInterface;
+import com.example.mason.visfitness.utils.DownloadRoutine;
+import com.example.mason.visfitness.utils.RetrieveRoutine;
 
 import java.util.ArrayList;
 
@@ -25,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class downloadWorkoutsFragment extends Fragment implements DataHandlerInterface {
+public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInterface {
 
     @BindView(R.id.rcView)
     RecyclerView recyclerView;
@@ -53,7 +57,7 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
     }
 
     private void getRoutine(){
-        RetrieveRoutine routine = new RetrieveRoutine(this,et_code.getText().toString());
+        RetrieveRoutine routine = new RetrieveRoutine(this,et_code.getText().toString().trim());
         routine.execute();
     }
 
@@ -66,8 +70,6 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
         db= dbHelper.getWritableDatabase();
         if(!routinesModel.isEmpty())
             populateRoutine(routinesModel.get(0));
-
-
     }
 
 
@@ -81,26 +83,8 @@ public class downloadWorkoutsFragment extends Fragment implements DataHandlerInt
                 Toast.makeText(getContext(), "Routine already saved!", Toast.LENGTH_SHORT).show();
             } while(cursor.moveToNext());
         }else{
-            ContentValues newValues = new ContentValues();
-            newValues.put(MyProviderContract.ROUTINE_ID, routinesModel.getRoutineID());
-            newValues.put(MyProviderContract.ROUTINE_NAME, routinesModel.getRoutineName());
-            getActivity().getContentResolver().insert(MyProviderContract.ROUT_URI, newValues);
-            ArrayList<ExerciseModel> exerciseModelList =routinesModel.getExercises();
-            for(ExerciseModel exerciseModel : exerciseModelList) {
-                newValues = new ContentValues();
-                ContentValues workoutValues = new ContentValues();
-                workoutValues.put(MyProviderContract.EXERCISE_ID, exerciseModel.getExerciseID());
-                workoutValues.put(MyProviderContract.ROUTINE_ID, routinesModel.getRoutineID());
-
-                newValues.put(MyProviderContract.EXERCISE_ID, exerciseModel.getExerciseID());
-                newValues.put(MyProviderContract.EXERCISE_NAME, exerciseModel.getExerciseName());
-                newValues.put(MyProviderContract.DEFAULT_SETS, exerciseModel.getDefaultSets());
-                newValues.put(MyProviderContract.DEFAULT_REPS, exerciseModel.getDefaultReps());
-                getActivity().getContentResolver().insert(MyProviderContract.EXER_URI, newValues);
-                getActivity().getContentResolver().insert(MyProviderContract.WORK_URI, workoutValues);
-            }
+            new DownloadRoutine().downloadRoutine(getContext(), routinesModel);
         }
-
         cursor.close();
     }
 
