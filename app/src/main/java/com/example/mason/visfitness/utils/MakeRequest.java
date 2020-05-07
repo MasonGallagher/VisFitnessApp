@@ -15,7 +15,7 @@ import okhttp3.Response;
 class MakeRequest {
     /* A class to host a highly reusable method of building and executing a request */
     Response performRequest(String suffix) throws IOException {
-        String url = "http://10.0.2.2/diss/"+suffix;
+        String url = "http://visfitness.org"+suffix;
         Request request = new Request.Builder().url(url).build();
         OkHttpClient client = new OkHttpClient();
         return client.newCall(request).execute();
@@ -24,7 +24,7 @@ class MakeRequest {
 
     /* A class to host a highly reusable method of building and executing a request */
     Response postRequest(String postbody) throws IOException {
-        String url = "http://10.0.2.2/diss/post_routine.php";
+        String url = "http://visfitness.org/post_routine.php";
         RequestBody body = RequestBody.create(JSON,postbody);
         Request request = new Request.Builder()
                 .url(url)

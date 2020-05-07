@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/workout_gradient3"
-            android:minHeight="140dp">
+            android:minHeight="140dp"
+            android:paddingBottom="12dp">
 
             <TextView
                 android:id="@+id/routine_name"

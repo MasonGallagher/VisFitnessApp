@@ -40,6 +40,7 @@ public class EditWorkoutsFragment extends Fragment {
     private RoutinesModel routinesModel;
     private ExerciseRecyclerAdapter adapter;
     private ArrayList<ExerciseModel> deleted_exercises;
+    private ArrayList<ExerciseModel> exerciseModelArrayList;
 
     public Fragment makeFragment(RoutinesModel routinesModel){
       this.routinesModel=routinesModel;
@@ -50,12 +51,33 @@ public class EditWorkoutsFragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_workout, container, false);
         ButterKnife.bind(this, view);
+        exerciseModelArrayList = routinesModel.getExercises();
         et_routine_name.setText(routinesModel.getRoutineName());
         exercise_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ExerciseRecyclerAdapter(getContext(), routinesModel.getExercises());
         exercise_recycler.setAdapter(adapter);
         deleted_exercises=new ArrayList<>();
         enableSwipeToDeleteAndUndo();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(int i=0; i<exercise_recycler.getChildCount();i++) {
+                    View v = exercise_recycler.getChildAt(i);
+                    EditText etName = v.findViewById(R.id.et_exercise_name);
+                    EditText etSets = v.findViewById(R.id.et_sets);
+                    EditText etReps = v.findViewById(R.id.et_reps);
+                    ExerciseModel exerciseModel = exerciseModelArrayList.get(i);
+                    exerciseModel.setExerciseName(etName.getText().toString());
+                    if(etSets.getText().length()!=0) {
+                        exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
+                        exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
+                    }
+                }
+                exerciseModelArrayList.add(new ExerciseModel());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
