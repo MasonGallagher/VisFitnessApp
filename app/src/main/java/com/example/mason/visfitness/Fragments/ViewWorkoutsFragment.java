@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.example.mason.visfitness.Activities.MainActivity;
 import com.example.mason.visfitness.Adapters.viewWorkoutAdapter;
 import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.R;
@@ -25,6 +27,8 @@ public class ViewWorkoutsFragment extends Fragment {
     RecyclerView recyclerView;
     @BindView(R.id.empty)
     RelativeLayout empty;
+    @BindView(R.id.help)
+    ImageView help;
 
     public viewWorkoutAdapter adapter;
     public ArrayList<RoutinesModel> routinesModelList;
@@ -43,6 +47,12 @@ public class ViewWorkoutsFragment extends Fragment {
         }else{
             empty.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
+            help.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity)getActivity()).setFragment(new SupportFragment());
+                }
+            });
         }
         return view;
     }
