@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,8 @@ import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.Models.RoutinesModel;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
 
 public class MyPopupClass implements DataHandlerInterface {
 

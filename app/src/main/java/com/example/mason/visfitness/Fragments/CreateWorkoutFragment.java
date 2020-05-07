@@ -1,44 +1,46 @@
 package com.example.mason.visfitness.Fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.mason.visfitness.Models.ExerciseModel;
 import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.R;
-import com.example.mason.visfitness.utils.ExerciseRecyclerAdapter;
+import com.example.mason.visfitness.Adapters.ExerciseRecyclerAdapter;
 import com.example.mason.visfitness.utils.SaveNewRoutine;
 import com.example.mason.visfitness.utils.SwipeToDeleteCallback;
 
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CreateWorkoutFragment extends Fragment{
+
+public class CreateWorkoutFragment extends Fragment {
 
 
     @BindView(R.id.button)
-    Button button;
+    LinearLayout button;
     @BindView(R.id.et_routine_name)
     EditText et_routine_name;
     @BindView(R.id.save)
-    Button save;
+    LinearLayout save;
     @BindView(R.id.exercise_recycler)
     RecyclerView exercise_recycler;
 
     private ArrayList<ExerciseModel> exerciseModelArrayList;
-    private  ExerciseRecyclerAdapter adapter;
+    private ExerciseRecyclerAdapter adapter;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -60,8 +62,10 @@ public class CreateWorkoutFragment extends Fragment{
                     EditText etReps = v.findViewById(R.id.et_reps);
                     ExerciseModel exerciseModel = exerciseModelArrayList.get(i);
                     exerciseModel.setExerciseName(etName.getText().toString());
-                    exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
-                    exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
+                    if(etSets.getText().length()!=0) {
+                        exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
+                        exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
+                    }
                 }
                 exerciseModelArrayList.add(new ExerciseModel());
                 adapter.notifyDataSetChanged();
