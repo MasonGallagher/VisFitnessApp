@@ -3,6 +3,7 @@ package com.example.mason.visfitness.utils;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -77,7 +78,7 @@ public class MyPopupClass implements DataHandlerInterface {
             }
         });
 
-            popupView.findViewById(R.id.share_layout).setOnClickListener(new View.OnClickListener() {
+        popupView.findViewById(R.id.share_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handler.postDelayed(new Runnable() {
@@ -100,13 +101,13 @@ public class MyPopupClass implements DataHandlerInterface {
     @Override
     public void DataHandlerInterface(ArrayList<RoutinesModel> routinesModel) {
             if(!routinesModel.isEmpty()) {
-                Toast.makeText(activity, "Share code has been copied to clipboard",
-                        Toast.LENGTH_SHORT).show();
-                ClipboardManager clipboard = (ClipboardManager)
-                        activity.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("label",
-                        routinesModel.get(0).getRoutineName());
-                clipboard.setPrimaryClip(clip);
+                String code = routinesModel.get(0).getRoutineName().trim();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, code);
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                activity.startActivity(shareIntent);
                 new SaveShareCode().saveShareCode(activity,routinesModel.get(0));
             }
     }

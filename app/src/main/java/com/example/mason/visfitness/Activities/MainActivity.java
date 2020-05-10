@@ -8,7 +8,7 @@ import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.Fragments.CreateWorkoutFragment;
 import com.example.mason.visfitness.Fragments.ViewWorkoutsFragment;
-import com.example.mason.visfitness.utils.downloadWorkoutsFragment;
+import com.example.mason.visfitness.Fragments.DownloadWorkoutsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -19,8 +19,6 @@ import androidx.fragment.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity {
 
     private Fragment viewWorkouts;
-    private Fragment createWorkouts;
-    private Fragment downloadWorkouts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +41,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.action_create:
-                        if (createWorkouts==null) {
-                            setFragment(new CreateWorkoutFragment());
-                        }else{
-                            setFragment(createWorkouts);
-                        }
+                        setFragment(new CreateWorkoutFragment());
                         break;
                     case R.id.action_download:
-                        if (downloadWorkouts==null) {
-                            setFragment(new downloadWorkoutsFragment());
-                        }else{
-                            setFragment(downloadWorkouts);
-                        }
+                        setFragment(new DownloadWorkoutsFragment());
                         break;
                 }
                 return false;
