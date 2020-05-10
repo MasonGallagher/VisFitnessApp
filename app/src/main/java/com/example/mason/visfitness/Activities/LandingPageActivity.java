@@ -26,7 +26,7 @@ public class LandingPageActivity extends Activity{
                 startActivity(intent);
                 finish();
             }
-        }, 1000);
+        }, 2500);
 
     }
 
