@@ -34,5 +34,14 @@
             android:textColor="@android:color/white"
             android:textSize="36sp"
             android:textStyle="bold|italic" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FadingCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            app:SpinKit_Color="@color/colorAccent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

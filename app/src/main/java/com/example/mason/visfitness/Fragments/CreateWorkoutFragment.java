@@ -92,7 +92,7 @@ public class CreateWorkoutFragment extends Fragment {
                 routinesModel.setExercises(exerciseModelArrayList);
                 new SaveNewRoutine().saveNewRoutine(getContext(),routinesModel);
                 Toast.makeText(getContext(), routinesModel.getRoutineName()+
-                        " has been successfully deleted!", Toast.LENGTH_SHORT).show();
+                        " has been successfully created!", Toast.LENGTH_SHORT).show();
 
             }
         });
