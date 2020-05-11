@@ -43,9 +43,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="No workouts have been added!"
+                android:text="No workouts have\n been added!"
                 android:textColor="@color/colorPrimary"
-                android:textSize="26sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
