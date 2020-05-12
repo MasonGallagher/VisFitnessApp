@@ -22,8 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class WorkoutAdapterExerciseAdapter extends RecyclerView.Adapter<WorkoutAdapterExerciseAdapter.ViewHolder> {
 
-        private ArrayList<ExerciseModel> exercises;
-        private LayoutInflater mInflater;
+        private final ArrayList<ExerciseModel> exercises;
+        private final LayoutInflater mInflater;
 
         public WorkoutAdapterExerciseAdapter(Context context, ArrayList<ExerciseModel> exercises) {
             this.mInflater = LayoutInflater.from(context);
@@ -50,9 +50,9 @@ public class WorkoutAdapterExerciseAdapter extends RecyclerView.Adapter<WorkoutA
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView exercise_name;
-            TextView sets;
-            TextView reps;
+            final TextView exercise_name;
+            final TextView sets;
+            final TextView reps;
             ViewHolder(View itemView) {
                 super(itemView);
                 exercise_name = itemView.findViewById(R.id.exercise_name);

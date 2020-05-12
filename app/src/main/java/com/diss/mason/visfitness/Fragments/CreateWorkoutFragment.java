@@ -47,9 +47,9 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
         exerciseModelArrayList = new ArrayList<>();
         exerciseModelArrayList.add(new ExerciseModel());
         exercise_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ExerciseRecyclerAdapter(getContext(), exerciseModelArrayList);
+        adapter = new ExerciseRecyclerAdapter(exerciseModelArrayList);
         exercise_recycler.setAdapter(adapter);
-        enableSwipeToDelete(exercise_recycler,adapter);
+        enableSwipe(exercise_recycler,adapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,18 +73,18 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean validaiton = validate_name(et_routine_name);
+                boolean validation = validate_name(et_routine_name);
                 exerciseModelArrayList = new ArrayList<>();
                 RoutinesModel routinesModel = new RoutinesModel();
-                if(validaiton) {
+                if(validation) {
                     routinesModel.setRoutineName(et_routine_name.getText().toString());
                     for (int i = 0; i < exercise_recycler.getChildCount(); i++) {
                         View v = exercise_recycler.getChildAt(i);
                         EditText etName = v.findViewById(R.id.et_exercise_name);
                         EditText etSets = v.findViewById(R.id.et_sets);
                         EditText etReps = v.findViewById(R.id.et_reps);
-                        validaiton = validate_fields(etName, etSets, etReps);
-                        if (validaiton) {
+                        validation = validate_fields(etName, etSets, etReps);
+                        if (validation) {
                             ExerciseModel exerciseModel = new ExerciseModel();
                             exerciseModel.setExerciseName(etName.getText().toString());
                             exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
@@ -96,7 +96,7 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
                     }
                     routinesModel.setExercises(exerciseModelArrayList);
                 }
-                if(validaiton) {
+                if(validation) {
                     new SaveNewRoutine().saveNewRoutine(getContext(), routinesModel);
                     Toast.makeText(getContext(), routinesModel.getRoutineName() +
                             " has been successfully created!", Toast.LENGTH_SHORT).show();

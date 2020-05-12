@@ -17,7 +17,7 @@ public class MyProvider extends ContentProvider {
 
     private static final UriMatcher uriMatcher;
     private DBHelper dbHelper;
-    SQLiteDatabase db;
+    private SQLiteDatabase db;
 
     /* my static pointers */
 

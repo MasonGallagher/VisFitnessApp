@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 
 /*
     This fragment uses an old RoutinesModel to build a new RoutinesModel
-    then updates it's values in the devices local datbase
+    then updates it's values in the devices local database
  */
 public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
 
@@ -54,10 +54,10 @@ public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
         exerciseModelArrayList = routinesModel.getExercises();
         et_routine_name.setText(routinesModel.getRoutineName());
         exercise_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ExerciseRecyclerAdapter(getContext(), routinesModel.getExercises());
+        adapter = new ExerciseRecyclerAdapter(routinesModel.getExercises());
         exercise_recycler.setAdapter(adapter);
         deleted_exercises=new ArrayList<>();
-        enableSwipeToDelete(exercise_recycler,adapter);
+        enableSwipe(exercise_recycler,adapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

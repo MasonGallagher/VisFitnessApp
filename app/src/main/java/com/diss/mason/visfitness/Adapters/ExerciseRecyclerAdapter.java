@@ -1,7 +1,6 @@
 package com.diss.mason.visfitness.Adapters;
 
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class ExerciseRecyclerAdapter extends RecyclerView.Adapter<ExerciseRecyclerAdapter.ViewHolder>  {
 
-    private ArrayList<ExerciseModel> exerciseModels;
-    private Context context;
+    private final ArrayList<ExerciseModel> exerciseModels;
 
-    public ExerciseRecyclerAdapter(Context context, ArrayList<ExerciseModel> exerciseModels) {
-        this.context=context;
+    public ExerciseRecyclerAdapter(ArrayList<ExerciseModel> exerciseModels) {
         this.exerciseModels = exerciseModels;
     }
 
@@ -56,20 +53,11 @@ public class ExerciseRecyclerAdapter extends RecyclerView.Adapter<ExerciseRecycl
         notifyItemRemoved(position);
     }
 
-    public void restoreItem(ExerciseModel item, int position) {
-        exerciseModels.add(position, item);
-        notifyItemInserted(position);
-    }
-
-    public ArrayList<ExerciseModel> getData() {
-        return exerciseModels;
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        EditText exercise_name;
-        EditText sets;
-        EditText reps;
-        public ViewHolder(View itemView) {
+        final EditText exercise_name;
+        final EditText sets;
+        final EditText reps;
+        ViewHolder(View itemView) {
             super(itemView);
             exercise_name = itemView.findViewById(R.id.et_exercise_name);
             sets = itemView.findViewById(R.id.et_sets);

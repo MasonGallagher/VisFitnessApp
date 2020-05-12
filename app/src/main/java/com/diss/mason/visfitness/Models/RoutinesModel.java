@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class RoutinesModel {
 
-    int routineID;
-    String routineName;
-    ArrayList<ExerciseModel> exercises;
+    private int routineID;
+    private String routineName;
+    private ArrayList<ExerciseModel> exercises;
 
     public RoutinesModel(int routineID, String routineName, ArrayList<ExerciseModel> exercises){
         this.routineID = routineID;

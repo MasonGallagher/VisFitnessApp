@@ -17,8 +17,8 @@ import okhttp3.Response;
  */
 
 public class RetrieveRoutine extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
-    private DataHandlerInterface listener;
-    private String variableID;
+    private final DataHandlerInterface listener;
+    private final String variableID;
 
     public RetrieveRoutine(DataHandlerInterface listener, String variableID){
         this.listener=listener;
