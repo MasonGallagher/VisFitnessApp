@@ -1,8 +1,10 @@
-package com.example.mason.visfitness.utils;
+package com.example.mason.visfitness.utils.SeverRequests;
 
 import android.os.AsyncTask;
 
 import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.utils.DataHandlerInterface;
+import com.example.mason.visfitness.utils.SeverRequests.MakeRequest;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
