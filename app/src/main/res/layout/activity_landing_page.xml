@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-    tools:context="com.example.mason.visfitness.Activities.SplashScreenActivity">
+    tools:context="com.diss.mason.visfitness.Activities.SplashScreenActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"

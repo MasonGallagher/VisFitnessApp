@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.example.mason.visfitness.Activities.MainActivity" >
+    tools:context="com.diss.mason.visfitness.Activities.MainActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
