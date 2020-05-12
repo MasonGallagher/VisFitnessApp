@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mason.visfitness.Activities.MainActivity">
+    tools:context="com.diss.mason.visfitness.Activities.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcView"

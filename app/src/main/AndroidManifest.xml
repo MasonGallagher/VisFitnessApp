@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.mason.visfitness">
+    package="com.diss.mason.visfitness">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.MainActivity"
+        <activity android:name="com.diss.mason.visfitness.Activities.MainActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Activities.SplashScreenActivity">
+        <activity android:name="com.diss.mason.visfitness.Activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,10 +24,10 @@
         </activity>
         <provider
             android:permission="android.permission.READ_EXTERNAL_STORAGE"
-            android:authorities="com.example.mason.visfitness.utils.MyProvider"
+            android:authorities="com.diss.mason.visfitness.utils.MyProvider"
             android:multiprocess="true"
             android:exported="true"
-            android:name="com.example.mason.visfitness.utils.MyProvider">
+            android:name="com.diss.mason.visfitness.utils.MyProvider">
         </provider>
     </application>
 </manifest>

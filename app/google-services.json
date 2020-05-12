@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "896625427714",
-    "firebase_url": "https://visfitness-58af0.firebaseio.com",
-    "project_id": "visfitness-58af0",
-    "storage_bucket": "visfitness-58af0.appspot.com"
+    "project_number": "382991341127",
+    "firebase_url": "https://visfitness-158e6.firebaseio.com",
+    "project_id": "visfitness-158e6",
+    "storage_bucket": "visfitness-158e6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:896625427714:android:535089914e9f3cb674ee1b",
+        "mobilesdk_app_id": "1:382991341127:android:9189561d1106dd98620362",
         "android_client_info": {
-          "package_name": "com.example.mason.visfitness"
+          "package_name": "com.diss.mason.visfitness"
         }
       },
       "oauth_client": [
         {
-          "client_id": "896625427714-f1uo9dgdd2u17149ek5mrij3j4muiujb.apps.googleusercontent.com",
+          "client_id": "382991341127-ao693k7fjbnh15o779ijb0eoofdos2cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.diss.mason.visfitness",
+            "certificate_hash": "25b7ee440dcc981b2aa0f0ac9c5a2591844b55cd"
+          }
+        },
+        {
+          "client_id": "382991341127-u1ugbscbsmpdqcnkbjfrmruphpbnd09g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCi6onM1G6YHAPzWcH9mOvkXUfqvesTIUk"
+          "current_key": "AIzaSyC1t6E3gX8vt9G-x46FSdtaiddDjsMECnY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "896625427714-f1uo9dgdd2u17149ek5mrij3j4muiujb.apps.googleusercontent.com",
+              "client_id": "382991341127-u1ugbscbsmpdqcnkbjfrmruphpbnd09g.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
