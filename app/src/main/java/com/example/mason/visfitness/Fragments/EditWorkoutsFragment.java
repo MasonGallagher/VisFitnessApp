@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EditWorkoutsFragment extends Fragment {
+public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
 
     @BindView(R.id.button)
     LinearLayout button;
@@ -40,7 +40,6 @@ public class EditWorkoutsFragment extends Fragment {
     private RoutinesModel routinesModel;
     private ExerciseRecyclerAdapter adapter;
     private ArrayList<ExerciseModel> deleted_exercises;
-    private ArrayList<ExerciseModel> exerciseModelArrayList;
 
     public Fragment makeFragment(RoutinesModel routinesModel){
       this.routinesModel=routinesModel;
@@ -49,7 +48,7 @@ public class EditWorkoutsFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_workout, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_edit_workout, container, false);
         ButterKnife.bind(this, view);
         exerciseModelArrayList = routinesModel.getExercises();
         et_routine_name.setText(routinesModel.getRoutineName());
@@ -57,7 +56,7 @@ public class EditWorkoutsFragment extends Fragment {
         adapter = new ExerciseRecyclerAdapter(getContext(), routinesModel.getExercises());
         exercise_recycler.setAdapter(adapter);
         deleted_exercises=new ArrayList<>();
-        enableSwipeToDeleteAndUndo();
+        enableSwipeToDelete(exercise_recycler,adapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,45 +80,40 @@ public class EditWorkoutsFragment extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean validation = validate_name(et_routine_name);
                 ArrayList<ExerciseModel> exerciseModelArrayList = new ArrayList<>();
                 RoutinesModel newRoutineModel = new RoutinesModel();
-                newRoutineModel.setRoutineID(routinesModel.getRoutineID());
-                newRoutineModel.setRoutineName(et_routine_name.getText().toString());
-                for(int i=0; i<exercise_recycler.getChildCount();i++){
-                    View v = exercise_recycler.getChildAt(i);
-                    EditText etName = v.findViewById(R.id.et_exercise_name);
-                    EditText etSets = v.findViewById(R.id.et_sets);
-                    EditText etReps = v.findViewById(R.id.et_reps);
-                    ExerciseModel exerciseModel = new ExerciseModel();
-                    exerciseModel.setExerciseID(routinesModel.getExercises().get(i).getExerciseID());
-                    exerciseModel.setExerciseName(etName.getText().toString());
-                    exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
-                    exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
-                    exerciseModelArrayList.add(exerciseModel);
+                if(validation) {
+                    newRoutineModel.setRoutineID(routinesModel.getRoutineID());
+                    newRoutineModel.setRoutineName(et_routine_name.getText().toString());
+                    for (int i = 0; i < exercise_recycler.getChildCount(); i++) {
+                        View v = exercise_recycler.getChildAt(i);
+                        EditText etName = v.findViewById(R.id.et_exercise_name);
+                        EditText etSets = v.findViewById(R.id.et_sets);
+                        EditText etReps = v.findViewById(R.id.et_reps);
+                        validation = validate_fields(etName,etSets,etReps);
+                        if(validation) {
+                            ExerciseModel exerciseModel = new ExerciseModel();
+                            exerciseModel.setExerciseID(routinesModel.getExercises().get(i).getExerciseID());
+                            exerciseModel.setExerciseName(etName.getText().toString());
+                            exerciseModel.setDefaultSets(Integer.valueOf(etSets.getText().toString()));
+                            exerciseModel.setDefaultReps(Integer.valueOf(etReps.getText().toString()));
+                            exerciseModelArrayList.add(exerciseModel);
+                        }
+                    }
+                    newRoutineModel.setExercises(exerciseModelArrayList);
                 }
-                newRoutineModel.setExercises(exerciseModelArrayList);
-                for(ExerciseModel exerciseModel: deleted_exercises)
-                    new DeleteExercise().deleteNewExercise(getContext(), exerciseModel);
-                new EditNewRoutine().EditNewRoutine(getContext(),newRoutineModel);
-                Toast.makeText(getContext(), routinesModel.getRoutineName()+
-                        " has been successfully edited!", Toast.LENGTH_SHORT).show();
-
+                if(validation) {
+                    for (ExerciseModel exerciseModel : deleted_exercises)
+                        new DeleteExercise().deleteNewExercise(getContext(), exerciseModel);
+                    new EditNewRoutine().EditNewRoutine(getContext(), newRoutineModel);
+                    Toast.makeText(getContext(), routinesModel.getRoutineName() +
+                            " has been successfully edited!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
     }
 
-    private void enableSwipeToDeleteAndUndo() {
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                deleted_exercises.add(routinesModel.getExercises().get(viewHolder.getAdapterPosition()));
-                routinesModel.getExercises().remove(routinesModel.getExercises().get(viewHolder.getAdapterPosition()));
-                adapter.notifyDataSetChanged();
-            }
-        };
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
-        itemTouchhelper.attachToRecyclerView(exercise_recycler);
-    }
 
 }

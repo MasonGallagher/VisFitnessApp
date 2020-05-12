@@ -12,7 +12,7 @@ import com.example.mason.visfitness.R;
  * Created by Mason on 04/12/2019.
  */
 
-public class LandingPageActivity extends Activity{
+public class SplashScreenActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
