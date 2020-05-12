@@ -29,7 +29,7 @@ public class SupportFragment extends Fragment {
         open_pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.visfitness.org/wp-content/uploads/2020/05/AIrev.pdf"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.visfitness.org/wp-content/uploads/2020/05/User-Guide-for-the-Vis-Fitness-App.pdf"));
                 startActivity(browserIntent);
             }
         });

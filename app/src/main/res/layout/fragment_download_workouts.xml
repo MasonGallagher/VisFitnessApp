@@ -69,7 +69,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Submit code"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

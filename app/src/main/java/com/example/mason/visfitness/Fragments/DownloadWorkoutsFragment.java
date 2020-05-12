@@ -1,25 +1,25 @@
 package com.example.mason.visfitness.Fragments;
 
 import android.content.ContentResolver;
-import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.mason.visfitness.Models.ExerciseModel;
 import com.example.mason.visfitness.R;
 import com.example.mason.visfitness.Models.RoutinesModel;
 import com.example.mason.visfitness.Adapters.viewWorkoutAdapter;
 import com.example.mason.visfitness.utils.DBHelper;
 import com.example.mason.visfitness.utils.DataHandlerInterface;
 import com.example.mason.visfitness.utils.DownloadRoutine;
-import com.example.mason.visfitness.utils.RetrieveRoutine;
+import com.example.mason.visfitness.utils.SeverRequests.RetrieveRoutine;
 
 import java.util.ArrayList;
 
@@ -49,7 +49,12 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               getRoutine();
+                InputMethodManager inputManager = (InputMethodManager)
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+                if(et_code.getText().length()>0)
+                    getRoutine();
             }
         });
 
@@ -84,6 +89,8 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
             } while(cursor.moveToNext());
         }else{
             new DownloadRoutine().downloadRoutine(getContext(), routinesModel);
+            Toast.makeText(getContext(), routinesModel.getRoutineName()+" has been saved!",
+                    Toast.LENGTH_SHORT).show();
         }
         cursor.close();
     }

@@ -9,6 +9,10 @@ import com.example.mason.visfitness.Models.RoutinesModel;
 
 import java.util.ArrayList;
 
+/*
+    A class for return all workout routines saved in the device's database as a list of
+    RoutinesModel
+ */
 public class GetSavedRoutines {
 
     public ArrayList<RoutinesModel> getSavedRoutines(Context context){

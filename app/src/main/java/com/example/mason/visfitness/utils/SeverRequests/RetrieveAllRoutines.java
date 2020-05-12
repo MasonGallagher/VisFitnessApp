@@ -1,12 +1,10 @@
-package com.example.mason.visfitness.utils;
+package com.example.mason.visfitness.utils.SeverRequests;
 
 import android.os.AsyncTask;
-
 import com.example.mason.visfitness.Models.RoutinesModel;
+import com.example.mason.visfitness.utils.DataHandlerInterface;
 import com.google.gson.Gson;
-
 import org.json.JSONArray;
-
 import java.util.ArrayList;
 
 import okhttp3.Response;
@@ -15,22 +13,22 @@ import okhttp3.Response;
  * Created by Mason on 04/12/2019.
  */
 
-public class RetrieveRoutine extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
+public class RetrieveAllRoutines extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
     private DataHandlerInterface listener;
-    private String variableID;
 
-    public RetrieveRoutine(DataHandlerInterface listener, String variableID){
+    public RetrieveAllRoutines(DataHandlerInterface listener){
         this.listener=listener;
-        this.variableID=variableID;
     }
     //In background make the sever request and convert the JSON to a list of Java objects
     protected ArrayList<RoutinesModel> doInBackground(Void... urls) {
         ArrayList<RoutinesModel> routinesModel = new ArrayList<>();
         try{
-            String suffix = String.format("get_specific_routine.php?rID=%s",variableID);
-            Response response = new MakeRequest().performRequest(suffix);
+            Response response = new MakeRequest().getRequest("get_routines.php");
             JSONArray jsonArray = new JSONArray(response.body().string());
-            routinesModel.add(new Gson().fromJson(jsonArray.get(0).toString(), RoutinesModel.class));
+            for(int i=0; i<jsonArray.length();i++){
+                //add each element in the JSON array to the object list
+                routinesModel.add(new Gson().fromJson(jsonArray.get(i).toString(), RoutinesModel.class));
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
