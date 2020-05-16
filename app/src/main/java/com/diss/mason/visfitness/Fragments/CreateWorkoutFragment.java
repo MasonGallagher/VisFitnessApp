@@ -12,11 +12,14 @@ import com.diss.mason.visfitness.Models.ExerciseModel;
 import com.diss.mason.visfitness.Models.RoutinesModel;
 import com.diss.mason.visfitness.R;
 import com.diss.mason.visfitness.Adapters.ExerciseRecyclerAdapter;
+import com.diss.mason.visfitness.utils.DeleteCallback;
 import com.diss.mason.visfitness.utils.SaveNewRoutine;
 
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -49,7 +52,7 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
         exercise_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ExerciseRecyclerAdapter(exerciseModelArrayList);
         exercise_recycler.setAdapter(adapter);
-        enableSwipe(exercise_recycler,adapter);
+        enableSwipe(exercise_recycler);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +107,17 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
             }
         });
         return view;
+    }
+
+    private void enableSwipe(RecyclerView exercise_recycler) {
+        DeleteCallback swipeToDeleteCallback = new DeleteCallback(getContext()) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+                adapter.removeItem(viewHolder.getAdapterPosition());
+            }
+        };
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(exercise_recycler);
     }
 
 }

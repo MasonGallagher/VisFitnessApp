@@ -11,13 +11,16 @@ import android.widget.Toast;
 import com.diss.mason.visfitness.Models.ExerciseModel;
 import com.diss.mason.visfitness.Models.RoutinesModel;
 import com.diss.mason.visfitness.R;
+import com.diss.mason.visfitness.utils.DeleteCallback;
 import com.diss.mason.visfitness.utils.DeleteExercise;
 import com.diss.mason.visfitness.utils.EditNewRoutine;
 import com.diss.mason.visfitness.Adapters.ExerciseRecyclerAdapter;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -38,9 +41,7 @@ public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
     @BindView(R.id.exercise_recycler)
     RecyclerView exercise_recycler;
 
-    private RoutinesModel routinesModel;
     private ExerciseRecyclerAdapter adapter;
-    private ArrayList<ExerciseModel> deleted_exercises;
 
     public Fragment makeFragment(RoutinesModel routinesModel){
       this.routinesModel=routinesModel;
@@ -105,6 +106,7 @@ public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
                     newRoutineModel.setExercises(exerciseModelArrayList);
                 }
                 if(validation) {
+                    System.out.println(deleted_exercises.size());
                     for (ExerciseModel exerciseModel : deleted_exercises)
                         new DeleteExercise().deleteNewExercise(getContext(), exerciseModel);
                     new EditNewRoutine().EditNewRoutine(getContext(), newRoutineModel);
