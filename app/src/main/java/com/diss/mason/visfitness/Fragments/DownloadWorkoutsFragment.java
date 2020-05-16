@@ -87,11 +87,11 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
                 share_code);
         if(cursor.moveToFirst()) {
             do {
-                Toast.makeText(getContext(), "Routine already saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.routine_already_saved), Toast.LENGTH_SHORT).show();
             } while(cursor.moveToNext());
         }else{
             new DownloadRoutine().downloadRoutine(getContext(), routinesModel);
-            Toast.makeText(getContext(), routinesModel.getRoutineName()+" has been saved!",
+            Toast.makeText(getContext(), routinesModel.getRoutineName()+ getString(R.string.has_been_saved),
                     Toast.LENGTH_SHORT).show();
         }
         cursor.close();

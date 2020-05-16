@@ -26,7 +26,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Download routine:"
+            android:text="@string/download_routine"
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Enter routine code: "
+                android:text="@string/enter_routine_code"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Submit code"
+                    android:text="@string/submit_code"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
             </LinearLayout>

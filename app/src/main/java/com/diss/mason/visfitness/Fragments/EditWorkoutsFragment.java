@@ -11,16 +11,13 @@ import android.widget.Toast;
 import com.diss.mason.visfitness.Models.ExerciseModel;
 import com.diss.mason.visfitness.Models.RoutinesModel;
 import com.diss.mason.visfitness.R;
-import com.diss.mason.visfitness.utils.DeleteCallback;
 import com.diss.mason.visfitness.utils.DeleteExercise;
 import com.diss.mason.visfitness.utils.EditNewRoutine;
 import com.diss.mason.visfitness.Adapters.ExerciseRecyclerAdapter;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -111,7 +108,7 @@ public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
                         new DeleteExercise().deleteNewExercise(getContext(), exerciseModel);
                     new EditNewRoutine().EditNewRoutine(getContext(), newRoutineModel);
                     Toast.makeText(getContext(), routinesModel.getRoutineName() +
-                            " has been successfully edited!", Toast.LENGTH_SHORT).show();
+                            getString(R.string.has_been_edited), Toast.LENGTH_SHORT).show();
                 }
             }
         });

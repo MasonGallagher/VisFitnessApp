@@ -44,7 +44,7 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
     private ExerciseRecyclerAdapter adapter;
 
     @Override
-    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView (LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_create_edit_workout, container, false);
         ButterKnife.bind(this,view);
         exerciseModelArrayList = new ArrayList<>();
@@ -102,7 +102,7 @@ public class CreateWorkoutFragment extends CreateEditWorkoutsFragment {
                 if(validation) {
                     new SaveNewRoutine().saveNewRoutine(getContext(), routinesModel);
                     Toast.makeText(getContext(), routinesModel.getRoutineName() +
-                            " has been successfully created!", Toast.LENGTH_SHORT).show();
+                            getString(R.string.has_been_created), Toast.LENGTH_SHORT).show();
                 }
             }
         });

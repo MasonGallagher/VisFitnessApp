@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/action_view"
-        android:title="View workouts"
+        android:title="@string/view_workouts"
         android:icon="@android:drawable/ic_menu_view" />
     <item android:id="@+id/action_create"
-        android:title="Create workout"
-        android:icon="@drawable/baseline_add_box_24" />
+        android:title="@string/create_workout"
+        android:icon="@drawable/add_box" />
     <item android:id="@+id/action_download"
-        android:title="Download workout"
+        android:title="@string/download_workout"
         android:icon="@android:drawable/stat_sys_download" />
 </menu>
