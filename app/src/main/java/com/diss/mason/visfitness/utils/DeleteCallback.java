@@ -20,26 +20,22 @@ import androidx.recyclerview.widget.RecyclerView;
     A class which allows exercises to be slid for deletion
  */
 
-abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
+abstract public class DeleteCallback extends ItemTouchHelper.Callback {
 
-    Context mContext;
-    private Paint mClearPaint;
-    private ColorDrawable mBackground;
-    private int backgroundColor;
-    private Drawable deleteDrawable;
-    private int intrinsicWidth;
-    private int intrinsicHeight;
+    private final Context context;
+    private final Paint paint;
+    private final ColorDrawable background;
+    private final int color;
+    private final Drawable delete_icon;
 
 
-    public SwipeToDeleteCallback(Context context) {
-        mContext = context;
-        mBackground = new ColorDrawable();
-        backgroundColor = context.getColor(R.color.soft_delete);
-        mClearPaint = new Paint();
-        mClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        deleteDrawable = ContextCompat.getDrawable(mContext, R.drawable.ic_delete);
-        intrinsicWidth = deleteDrawable.getIntrinsicWidth();
-        intrinsicHeight = deleteDrawable.getIntrinsicHeight();
+    public DeleteCallback(Context context) {
+        this.context = context;
+        background = new ColorDrawable();
+        color = context.getColor(R.color.soft_delete);
+        paint = new Paint();
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        delete_icon = ContextCompat.getDrawable(this.context, R.drawable.ic_delete);
 
     }
 
@@ -59,38 +55,30 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
         View itemView = viewHolder.itemView;
-        int itemHeight = itemView.getHeight();
-
         boolean isCancelled = dX == 0 && !isCurrentlyActive;
 
         if (isCancelled) {
-            clearCanvas(c, itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
+            clear(c, itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             return;
         }
 
-        mBackground.setColor(backgroundColor);
-        mBackground.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
-        mBackground.draw(c);
+        background.setColor(color);
+        background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
+        background.draw(c);
 
-        int deleteIconTop = itemView.getTop() + (itemHeight - intrinsicHeight) / 2;
-        int deleteIconMargin = (itemHeight - intrinsicHeight) / 2;
-        int deleteIconLeft = itemView.getRight() - deleteIconMargin - intrinsicWidth;
+        int deleteIconTop = itemView.getTop() + (itemView.getHeight() - delete_icon.getIntrinsicHeight()) / 2;
+        int deleteIconMargin = (itemView.getHeight() - delete_icon.getIntrinsicHeight()) / 2;
+        int deleteIconLeft = itemView.getRight() - deleteIconMargin - delete_icon.getIntrinsicWidth();
         int deleteIconRight = itemView.getRight() - deleteIconMargin;
-        int deleteIconBottom = deleteIconTop + intrinsicHeight;
-
-
-        deleteDrawable.setBounds(deleteIconLeft, deleteIconTop, deleteIconRight, deleteIconBottom);
-        deleteDrawable.draw(c);
-
+        int deleteIconBottom = deleteIconTop + delete_icon.getIntrinsicHeight();
+        delete_icon.setBounds(deleteIconLeft, deleteIconTop, deleteIconRight, deleteIconBottom);
+        delete_icon.draw(c);
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
-
     }
 
-    private void clearCanvas(Canvas c, Float left, Float top, Float right, Float bottom) {
-        c.drawRect(left, top, right, bottom, mClearPaint);
-
+    private void clear(Canvas c, Float left, Float top, Float right, Float bottom) {
+        c.drawRect(left, top, right, bottom, paint);
     }
 
     @Override

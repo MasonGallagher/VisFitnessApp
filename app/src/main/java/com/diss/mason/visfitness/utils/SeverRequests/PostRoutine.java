@@ -19,8 +19,8 @@ import okhttp3.Response;
  */
 
 public class PostRoutine extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
-    private DataHandlerInterface listener;
-    private RoutinesModel routinesModel;
+    private final DataHandlerInterface listener;
+    private final RoutinesModel routinesModel;
 
     public PostRoutine(DataHandlerInterface listener, RoutinesModel routinesModel){
         this.listener=listener;

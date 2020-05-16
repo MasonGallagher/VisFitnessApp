@@ -31,9 +31,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class viewWorkoutAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-        private ArrayList<RoutinesModel> routineList;
-        private LayoutInflater mInflater;
-        private Context context;
+        private final ArrayList<RoutinesModel> routineList;
+        private final LayoutInflater mInflater;
+        private final Context context;
         private static final int TYPE_HEADER = 0;
         private static final int TYPE_ITEM = 1;
 
@@ -94,8 +94,8 @@ public class viewWorkoutAdapter  extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     class VHHeader extends RecyclerView.ViewHolder {
-        ImageView help;
-        public VHHeader(View itemView) {
+        final ImageView help;
+        VHHeader(View itemView) {
             super(itemView);
             help = itemView.findViewById(R.id.help);
             help.setOnClickListener(new View.OnClickListener() {
@@ -107,11 +107,11 @@ public class viewWorkoutAdapter  extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    public class ViewHolderItem extends RecyclerView.ViewHolder {
-            TextView routine_name;
-            ImageView editBtn;
-            ConstraintLayout frameLayout;
-            RecyclerView exercise_recycler;
+    class ViewHolderItem extends RecyclerView.ViewHolder {
+            final TextView routine_name;
+            final ImageView editBtn;
+            final ConstraintLayout frameLayout;
+            final RecyclerView exercise_recycler;
             ViewHolderItem(View itemView) {
                 super(itemView);
                 routine_name = itemView.findViewById(R.id.routine_name);

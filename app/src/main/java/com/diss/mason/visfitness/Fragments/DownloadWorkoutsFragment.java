@@ -1,6 +1,5 @@
 package com.diss.mason.visfitness.Fragments;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -40,15 +39,14 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
     EditText et_code;
     @BindView(R.id.submit)
     LinearLayout submit;
-    ContentResolver cr;
-    DBHelper dbHelper;
-    SQLiteDatabase db;
+    private DBHelper dbHelper;
+    private SQLiteDatabase db;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_download_workouts, container, false);
         ButterKnife.bind(this,view);
-        cr = getActivity().getContentResolver();
+        getActivity().getContentResolver();
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

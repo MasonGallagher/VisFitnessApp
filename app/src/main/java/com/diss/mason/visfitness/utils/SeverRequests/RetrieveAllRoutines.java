@@ -17,12 +17,9 @@ import okhttp3.Response;
     a test class for testing that returns all routines in the remote database
  */
 
-public class RetrieveAllRoutines extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
+class RetrieveAllRoutines extends AsyncTask<Void, ArrayList<RoutinesModel>, ArrayList<RoutinesModel>> {
     private DataHandlerInterface listener;
 
-    public RetrieveAllRoutines(DataHandlerInterface listener){
-        this.listener=listener;
-    }
     //In background make the sever request and convert the JSON to a list of Java objects
     protected ArrayList<RoutinesModel> doInBackground(Void... urls) {
         ArrayList<RoutinesModel> routinesModel = new ArrayList<>();

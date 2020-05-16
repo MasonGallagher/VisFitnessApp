@@ -4,7 +4,8 @@ import android.widget.EditText;
 
 import com.diss.mason.visfitness.Adapters.ExerciseRecyclerAdapter;
 import com.diss.mason.visfitness.Models.ExerciseModel;
-import com.diss.mason.visfitness.utils.SwipeToDeleteCallback;
+import com.diss.mason.visfitness.Models.RoutinesModel;
+import com.diss.mason.visfitness.utils.DeleteCallback;
 
 import java.util.ArrayList;
 
@@ -17,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
     validates fields preventing code duplication
  */
 
-public class CreateEditWorkoutsFragment extends Fragment {
+class CreateEditWorkoutsFragment extends Fragment {
 
     ArrayList<ExerciseModel> exerciseModelArrayList;
+    ArrayList<ExerciseModel> deleted_exercises;
+    RoutinesModel routinesModel;
 
 
     private boolean set_error(EditText editText){
@@ -53,14 +56,17 @@ public class CreateEditWorkoutsFragment extends Fragment {
         return true;
     }
 
-    void enableSwipeToDelete(RecyclerView exercise_recycler, final ExerciseRecyclerAdapter adapter) {
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+    void enableSwipe(RecyclerView exercise_recycler, final ExerciseRecyclerAdapter adapter) {
+        DeleteCallback swipeToDeleteCallback = new DeleteCallback(getContext()) {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                adapter.removeItem(viewHolder.getAdapterPosition());
+                deleted_exercises.add(routinesModel.getExercises().get(viewHolder.getAdapterPosition()));
+                routinesModel.getExercises().remove(routinesModel.getExercises().get(viewHolder.getAdapterPosition()));
+                adapter.notifyDataSetChanged();
             }
         };
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
         itemTouchhelper.attachToRecyclerView(exercise_recycler);
     }
+
 }
