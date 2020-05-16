@@ -6,20 +6,13 @@ package com.diss.mason.visfitness.Models;
 
 public class ExerciseModel {
 
-    int exerciseID;
-    String exerciseName;
-    int defaultSets;
-    int defaultReps;
+    private int exerciseID;
+    private String exerciseName;
+    private int defaultSets;
+    private int defaultReps;
 
     public ExerciseModel(){
 
-    }
-
-    public ExerciseModel(int exerciseID, String exerciseName, int defaultSets, int defaultReps){
-        this.exerciseID = exerciseID;
-        this.exerciseName = exerciseName;
-        this.defaultSets = defaultSets;
-        this.defaultReps = defaultReps;
     }
 
     public int getExerciseID() {

@@ -8,7 +8,7 @@ import com.diss.mason.visfitness.Models.RoutinesModel;
 /*
     A class to delete a routine from the devices database
  */
-public class DeleteNewRoutine {
+class DeleteNewRoutine {
 
     public void deleteNewRoutine(Context context,RoutinesModel routinesModel) {
         context.getContentResolver().delete(MyProviderContract.ROUT_URI,
