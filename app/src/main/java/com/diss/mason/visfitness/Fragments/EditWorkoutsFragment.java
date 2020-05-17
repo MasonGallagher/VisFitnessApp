@@ -82,6 +82,7 @@ public class EditWorkoutsFragment extends CreateEditWorkoutsFragment {
                 boolean validation = validate_name(et_routine_name);
                 ArrayList<ExerciseModel> exerciseModelArrayList = new ArrayList<>();
                 RoutinesModel newRoutineModel = new RoutinesModel();
+                //validate and build routine models
                 if(validation) {
                     newRoutineModel.setRoutineID(routinesModel.getRoutineID());
                     newRoutineModel.setRoutineName(et_routine_name.getText().toString());

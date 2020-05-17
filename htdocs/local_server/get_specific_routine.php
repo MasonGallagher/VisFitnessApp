@@ -10,8 +10,14 @@
 	
 		public function _get($conn){
 				$json = array();
+				//decrypt the code to a routine ID
+				$encrypted_id = $_GET["rID"];
+				$salt="VIS_FIT";
+				$decrypted_id_raw = base64_decode($encrypted_id);
+				$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+				$rID=$decrypted_id;
 				$query = "SELECT workouts.routineID, workouts.exerciseID, routines.routineName, exercises.exerciseName, exercises.defaultSets, exercises.defaultReps
-				FROM workouts INNER JOIN exercises ON exercises.exerciseID = workouts.exerciseID INNER JOIN routines ON routines.routineID = workouts.routineID ";
+				FROM workouts INNER JOIN exercises ON exercises.exerciseID = workouts.exerciseID INNER JOIN routines ON routines.routineID = workouts.routineID WHERE workouts.routineID='$rID' ";
 				$result = mysqli_query($conn->getDb(), $query);
 				//get all rows as an array
 				$rows = array();

@@ -39,4 +39,6 @@
     <string name="download_workout">Download workout</string>
     <string name="create_workout">Create workout</string>
     <string name="exercise_name">Exercise Name:</string>
+    <string name="invalid_code">Invalid code</string>
+    <string name="routine_not_found">Error: routine could not be found</string>
 </resources>

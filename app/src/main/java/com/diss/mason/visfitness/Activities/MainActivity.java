@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         viewWorkouts = new ViewWorkoutsFragment();
         setFragment(viewWorkouts);
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNav);
+        //handles clicks on the bottom navigation view
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
