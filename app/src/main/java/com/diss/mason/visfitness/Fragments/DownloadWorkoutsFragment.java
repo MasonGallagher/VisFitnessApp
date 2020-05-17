@@ -50,12 +50,16 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //hide keyboard
                 InputMethodManager inputManager = (InputMethodManager)
                         getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
-                if(et_code.getText().length()>0)
+                if(et_code.getText().length()>0) {
                     getRoutine();
+                }else{
+                    et_code.setError(getString(R.string.invalid_code));
+                }
             }
         });
 
@@ -75,8 +79,11 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
         recyclerView.setAdapter(adapter);
         dbHelper = new DBHelper(getContext(), "mydb", null, 8);
         db= dbHelper.getWritableDatabase();
-        if(!routinesModel.isEmpty())
+        if(!routinesModel.isEmpty()) {
             populateRoutine(routinesModel.get(0));
+        }else{
+            Toast.makeText(getContext(), R.string.routine_not_found, Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -87,11 +94,11 @@ public class DownloadWorkoutsFragment extends Fragment implements DataHandlerInt
                 share_code);
         if(cursor.moveToFirst()) {
             do {
-                Toast.makeText(getContext(), "Routine already saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.routine_already_saved), Toast.LENGTH_SHORT).show();
             } while(cursor.moveToNext());
         }else{
             new DownloadRoutine().downloadRoutine(getContext(), routinesModel);
-            Toast.makeText(getContext(), routinesModel.getRoutineName()+" has been saved!",
+            Toast.makeText(getContext(), routinesModel.getRoutineName()+ getString(R.string.has_been_saved),
                     Toast.LENGTH_SHORT).show();
         }
         cursor.close();

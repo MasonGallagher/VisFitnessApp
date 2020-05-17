@@ -23,6 +23,7 @@ public class SplashScreenActivity extends Activity{
         setContentView(R.layout.activity_landing_page);
         Handler handler = new Handler();
         final Intent intent = new Intent(this, MainActivity.class);
+        //delay the opening of the next activity
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

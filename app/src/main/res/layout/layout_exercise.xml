@@ -11,7 +11,7 @@
             android:id="@+id/exercise_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="exercise:"
+            android:text="@string/exercise"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
             android:id="@+id/sets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sets:"
+            android:text="@string/sets_colon"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exercise_name" />
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Reps:"
+            android:text="@string/reps_colon"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toEndOf="@+id/sets"
             app:layout_constraintTop_toBottomOf="@+id/exercise_name" />

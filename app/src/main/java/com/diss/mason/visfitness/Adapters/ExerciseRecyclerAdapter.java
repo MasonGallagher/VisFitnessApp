@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
 /*
-    Adapter responsible for populating a recycler view with exercises
+    Adapter responsible for populating a recycler view with exercises when creating a routine
  */
 public class ExerciseRecyclerAdapter extends RecyclerView.Adapter<ExerciseRecyclerAdapter.ViewHolder>  {
 

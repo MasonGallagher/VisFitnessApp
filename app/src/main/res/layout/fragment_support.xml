@@ -41,7 +41,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Having trouble?"
+                    android:text="@string/having_trouble"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Please refer to our User Guide:"
+                    android:text="@string/please_refer_to_our_user_guide"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="via website"
+                        android:text="@string/via_website"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -85,7 +85,7 @@
                         android:layout_height="36dp"
                         android:layout_marginStart="2dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/baseline_public_24" />
+                        app:srcCompat="@drawable/ic_public" />
                 </LinearLayout>
 
                 <TextView
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="or"
+                    android:text="@string/or"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +116,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Download "
+                        android:text="@string/download"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
@@ -127,7 +127,7 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_weight="1"
-                        android:src="@drawable/baseline_picture_as_pdf_24" />
+                        android:src="@drawable/ic_pdf" />
                 </LinearLayout>
 
                 <TextView
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:text="Still having trouble?"
+                    android:text="@string/still_having_trouble"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Please email: "
+                    android:text="@string/please_email"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
 
-                    android:text="reportvisfit@gmail.com"
+                    android:text="@string/reportvisfit_gmail_com"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -1,1 +1,0 @@
-SELECT workouts.routineID, workouts.exerciseID, routines.routineName, exercises.exerciseName, exercises.defaultSets, exercises.defaultReps FROM workouts INNER JOIN exercises ON exercises.exerciseID = workouts.exerciseID INNER JOIN routines ON routines.routineID = workouts.routineID WHERE workouts.routineID=1

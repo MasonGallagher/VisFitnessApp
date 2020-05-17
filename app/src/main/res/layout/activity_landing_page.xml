@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Vis Fitness"
+            android:text="@string/vis_fitness"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="36sp"

@@ -10,6 +10,7 @@
 	
 		public function _get($conn){
 				$json = array();
+				//decrypt the code to a routine ID
 				$encrypted_id = $_GET["rID"];
 				$salt="VIS_FIT";
 				$decrypted_id_raw = base64_decode($encrypted_id);

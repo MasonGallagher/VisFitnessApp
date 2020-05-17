@@ -24,11 +24,15 @@ class CreateEditWorkoutsFragment extends Fragment {
     ArrayList<ExerciseModel> deleted_exercises;
     RoutinesModel routinesModel;
 
+    /*
+        Validation methods
+     */
 
     private boolean set_error(EditText editText){
         editText.setError("Invalid entry");
         return false;
     }
+
     boolean validate_name(EditText et_routine_name){
         if(et_routine_name.getText().length()<2 || et_routine_name.getText().length()>35){
             return set_error(et_routine_name);
