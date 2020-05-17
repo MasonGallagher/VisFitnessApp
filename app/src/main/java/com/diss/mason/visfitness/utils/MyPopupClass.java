@@ -53,7 +53,7 @@ public class MyPopupClass implements DataHandlerInterface {
                         new DeleteNewRoutine().deleteNewRoutine(context, routinesModel);
                         activity.refreshViewFragment(routinesModel);
                         Toast.makeText(context, routinesModel.getRoutineName() +
-                                " has been successfully deleted!", Toast.LENGTH_SHORT).show();
+                                context.getString(R.string.has_been_deleted), Toast.LENGTH_SHORT).show();
                         popupWindow.dismiss();
                     }
                 }, 100);

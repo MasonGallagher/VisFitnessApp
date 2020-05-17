@@ -6,7 +6,7 @@ import com.diss.mason.visfitness.Models.ExerciseModel;
 import com.diss.mason.visfitness.Models.RoutinesModel;
 
 /*
-    A class to delete a routine from the devices database
+    A class to icon_delete a routine from the devices database
  */
 class DeleteNewRoutine {
 

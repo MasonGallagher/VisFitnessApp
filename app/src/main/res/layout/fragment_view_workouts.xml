@@ -30,7 +30,7 @@
             android:layout_margin="16dp"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
-            app:srcCompat="@drawable/baseline_contact_support_24" />
+            app:srcCompat="@drawable/contact_support" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="No workouts have\n been added!"
+                android:text="@string/no_workouts_have_n_been_added"
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
                 android:textStyle="bold" />

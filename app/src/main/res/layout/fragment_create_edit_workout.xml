@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Create Workout:"
+                android:text="@string/create_workout"
                 android:textColor="@color/colorPrimary"
                 android:textSize="36sp"
                 android:textStyle="bold" />
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:text="Routine name:" />
+                    android:text="@string/routine_name_colon" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="Routine Name"
+                        android:hint="@string/routine_name"
                         android:padding="12dp"
                         android:textColorHint="@color/hint_colour"
                         android:textStyle="bold" />
@@ -77,7 +77,7 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/baseline_add_circle_24"
+                    android:src="@drawable/add_circle"
                     android:tint="@color/colorPrimary" />
 
                 <TextView
@@ -85,7 +85,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
                     android:gravity="center_vertical"
-                    android:text="Add Exercise:"
+                    android:text="@string/add_exercise_colon"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp" />
 
@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Save Routine"
+                    android:text="@string/save_routine"
                     android:textSize="18sp"
                     android:textColor="@android:color/white" />
             </LinearLayout>

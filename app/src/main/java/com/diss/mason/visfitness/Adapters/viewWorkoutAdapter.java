@@ -26,7 +26,9 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 
 /*
-    An activity responsible
+    An adapter responsible for populating the workout cards on the ViewWorkoutsFragment
+    items have two types, item or header, header allows for a title and support page button
+    within the recycler view
  */
 
 public class viewWorkoutAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -46,15 +48,13 @@ public class viewWorkoutAdapter  extends RecyclerView.Adapter<RecyclerView.ViewH
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             if (viewType == TYPE_ITEM) {
-                //inflate your layout and pass it to view holder
                 View view = mInflater.inflate(R.layout.recyclerview_workout_item, parent, false);
                 return new ViewHolderItem(view);
             } else if (viewType == TYPE_HEADER) {
-                //inflate your layout and pass it to view holder
                 View view = mInflater.inflate(R.layout.layout_header_view_routines, parent, false);
                 return new VHHeader(view);
             }
-            throw new RuntimeException("there is no type that matches the type " + viewType + " + make sure your using types correctly");
+            throw new RuntimeException("error "+viewType);
         }
 
         @Override

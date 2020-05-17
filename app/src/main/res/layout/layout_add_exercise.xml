@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
-            android:text="Exercise Name:"
+            android:text="@string/exercise_name"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:textColorHint="@color/hint_colour"
-                android:hint="Name:"
+                android:hint="@string/name"
                 android:padding="12dp" />
         </LinearLayout>
     </LinearLayout>
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
-            android:text="Sets:"
+            android:text="@string/sets_colon"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:hint="Sets:"
+                android:hint="@string/sets"
                 android:textColorHint="@color/hint_colour"
                 android:inputType="number"
                 android:padding="12dp" />
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
-            android:text="Reps:"
+            android:text="@string/reps_colon"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -104,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:textColorHint="@color/hint_colour"
-                android:hint="Reps:"
+                android:hint="@string/reps"
                 android:inputType="number"
                 android:padding="12dp" />
         </LinearLayout>

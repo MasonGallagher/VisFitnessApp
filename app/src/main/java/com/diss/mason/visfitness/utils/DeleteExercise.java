@@ -5,7 +5,7 @@ import android.content.Context;
 import com.diss.mason.visfitness.Models.ExerciseModel;
 
 /*
-    A class to delete an exercise from the devices database
+    A class to icon_delete an exercise from the devices database
  */
 public class DeleteExercise {
 

@@ -18,14 +18,14 @@
             android:background="?selectableItemBackgroundBorderless"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_contact_support_24" />
+            app:srcCompat="@drawable/contact_support" />
 
         <TextView
             android:id="@+id/exercise_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Your routines:"
+            android:text="@string/your_routines"
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
             android:textStyle="bold"
